@@ -55,15 +55,15 @@ public class BillingDaoImpl implements BillingDao {
 				ProductDto item = products.stream()
 						.filter(product -> product.getId() == productJSON.getInt("productId")).findFirst()
 						.orElseThrow(() -> new RuntimeException("Invalid product"));
-
-				if (productJSON.getInt("quantity") == 0) {
+				int quanity = productJSON.getInt("quantity");
+				if (quanity == 0) {
 					throw new ProductQuantityCannotBeZeroException("Quantity cannot be zero ");
 				}
 
 				if (item.getCategory().equalsIgnoreCase("grocery")) {
-					totalGroceryItemsPrice += (item.getPrice() * productJSON.getInt("quantity"));
+					totalGroceryItemsPrice += (item.getPrice() * quanity);
 				} else {
-					totalNonGroceryItemsPrice += (item.getPrice() * productJSON.getInt("quantity"));
+					totalNonGroceryItemsPrice += (item.getPrice() * quanity);
 				}
 			}
 
