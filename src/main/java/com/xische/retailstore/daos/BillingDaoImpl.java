@@ -13,6 +13,8 @@ import com.xische.retailstore.Products;
 import com.xische.retailstore.Users;
 import com.xische.retailstore.dtos.ProductDto;
 import com.xische.retailstore.dtos.UserDto;
+import com.xische.retailstore.exceptions.InvalidUserException;
+import com.xische.retailstore.exceptions.ProductQuantityCannotBeZeroException;
 
 /**
  * The BillingDaoImpl class implements the BillingDao interface and provides the
@@ -41,7 +43,7 @@ public class BillingDaoImpl implements BillingDao {
 		JSONObject response = new JSONObject();
 		try {
 			UserDto userDto = users.stream().filter(user -> user.getId() == userId).findFirst()
-					.orElseThrow(() -> new RuntimeException("Invalid User"));
+					.orElseThrow(() -> new InvalidUserException("Invalid User"));
 
 			JSONArray selectedProducts = request.getJSONArray("products");
 
@@ -53,6 +55,11 @@ public class BillingDaoImpl implements BillingDao {
 				ProductDto item = products.stream()
 						.filter(product -> product.getId() == productJSON.getInt("productId")).findFirst()
 						.orElseThrow(() -> new RuntimeException("Invalid product"));
+
+				if (productJSON.getInt("quantity") == 0) {
+					throw new ProductQuantityCannotBeZeroException("Quantity cannot be zero ");
+				}
+
 				if (item.getCategory().equalsIgnoreCase("grocery")) {
 					totalGroceryItemsPrice += (item.getPrice() * productJSON.getInt("quantity"));
 				} else {
