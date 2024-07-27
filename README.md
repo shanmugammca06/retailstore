@@ -101,11 +101,9 @@ To set up and run the Retail Store Billing System project, ensure you have the f
     
     **Format:** Ensure these files are placed in the src/main/resources directory of your project.
 
-4. Build and Run the Application
-
-   4.1 Open a terminal or command prompt.
-
-   4.2 Navigate to the root directory of the project where `pom.xml` is located.
+# Build, Test, and Run the Application
+1. Open a terminal or command prompt.
+2. Navigate to the root directory of the project where `pom.xml` is located.
 
     **Build:** Use Maven to build the project.
    ~~~
@@ -116,7 +114,7 @@ To set up and run the Retail Store Billing System project, ensure you have the f
     ~~~
     mvn spring-boot:run
     ~~~
-5. Testing
+3. Testing or to generate Jacoco code coverage report 
 
    **JUnit:** Ensure your project includes JUnit for running tests.
 
@@ -124,4 +122,42 @@ To set up and run the Retail Store Billing System project, ensure you have the f
    ~~~
    mvn test
    ~~~
+   Jacoco HTML report will be generated in `target\site\jacoco\index.html`
+4. To generate SonarQube report
 
+   **Prerequisites**
+   
+   SonarQube/Ensure you have SonarQube configured and accessible.
+   
+   **Running Sonar Analysis**
+   
+   Open Terminal or Command Prompt: Navigate to the root directory of your project where pom.xml is located run the following command.
+   ~~~
+   mvn sonar:sonar
+   ~~~
+   **Result**
+
+   Report can be viwed in the URL http://localhost:9000
+5. Access the API
+   You can access the API endpoints using tools like Postman or cURL. Here are examples of how to access the generateBill endpoint:
+
+   **Using Postman**
+   1. Open Postman and create a new POST request.
+   2. Set the request URL to http://localhost:8080/api/generateBill.
+   3. Set the request body to JSON format and include the cart details:
+   ~~~
+   {
+    "products": [
+        {
+            "productId": 123,
+            "quantity": 2
+        },
+        {
+            "productId": 124,
+            "quantity": 12
+        }
+    ]
+   }
+   ~~~
+   4. Add a query parameter userId with the value of the user's ID.
+   5. Send the request and check the response.
