@@ -164,3 +164,9 @@ To set up and run the Retail Store Billing System project, ensure you have the f
    ~~~
    4. Add a query parameter userId with the value of the user's ID.
    5. Send the request and check the response.
+  
+
+# UML Diagram
+
+**Class Diagram**
+![UMLDiagram](https://github.com/user-attachments/assets/dd2ffffd-0c4b-4223-9b27-77781409d603)
