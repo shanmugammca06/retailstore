@@ -123,7 +123,10 @@ To set up and run the Retail Store Billing System project, ensure you have the f
    mvn test
    ~~~
    Jacoco HTML report will be generated in `target\site\jacoco\index.html`
-4. To generate SonarQube report
+   
+   ![image](https://github.com/user-attachments/assets/0da3e89e-a952-46fa-afc3-a9e1609f4b1a)
+
+5. To generate SonarQube report
 
    **Prerequisites**
    
@@ -138,7 +141,7 @@ To set up and run the Retail Store Billing System project, ensure you have the f
    **Result**
 
    Report can be viwed in the URL http://localhost:9000
-5. Access the API
+6. Access the API
    You can access the API endpoints using tools like Postman or cURL. Here are examples of how to access the generateBill endpoint:
 
    **Using Postman**
