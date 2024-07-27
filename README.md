@@ -124,7 +124,8 @@ To set up and run the Retail Store Billing System project, ensure you have the f
    ~~~
    Jacoco HTML report will be generated in `target\site\jacoco\index.html`
    
-   ![image](https://github.com/user-attachments/assets/0da3e89e-a952-46fa-afc3-a9e1609f4b1a)
+  ![image](https://github.com/user-attachments/assets/4e9aae67-8feb-4147-a011-bd22931a06fe)
+
 
 5. To generate SonarQube report
 
@@ -169,4 +170,5 @@ To set up and run the Retail Store Billing System project, ensure you have the f
 # UML Diagram
 
 **Class Diagram**
+
 ![UMLDiagram](https://github.com/user-attachments/assets/dd2ffffd-0c4b-4223-9b27-77781409d603)
