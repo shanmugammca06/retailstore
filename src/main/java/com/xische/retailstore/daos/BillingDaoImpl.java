@@ -26,8 +26,8 @@ public class BillingDaoImpl implements BillingDao {
 	private final int affiliateDiscountPercentage = 10;
 	private final int oldCustomerDiscountPercentage = 5;
 	private final DecimalFormat f = new DecimalFormat("##.00");
-	private final ArrayList<UserDto> users = Users.getInstance().getUsers();
-	private final ArrayList<ProductDto> products = Products.getInstance().getProducts();
+	private final ArrayList<UserDto> users = Users.getInstance().getUserInfo();
+	private final ArrayList<ProductDto> products = Products.getInstance().getProductInfo();
 
 	/**
 	 * Generates a bill based on the selected items and user ID.

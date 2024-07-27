@@ -23,14 +23,14 @@ import com.xische.retailstore.dtos.UserDto;
 public class Users {
 
 	private static Users instance;
-	private ArrayList<UserDto> users = new ArrayList<>();
+	private ArrayList<UserDto> userInfo = new ArrayList<>();
 
 	/**
 	 * Private constructor for the singleton pattern. Reads user data from a file
 	 * and initializes the users list.
 	 * 
 	 * The file is expected to be located at "classpath:templates/userinfo.db" and
-	 * should contain user data in a tab-separated format. 
+	 * should contain user data in a tab-separated format.
 	 */
 	private Users() {
 		try {
@@ -39,7 +39,6 @@ public class Users {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 			for (String line : lines) {
 				if (line.startsWith("#")) {
-					System.out.println("loading user data");
 					continue;
 				}
 				UserDto user = new UserDto();
@@ -50,7 +49,7 @@ public class Users {
 				user.setSubscriptionDate(sdf.parse(lineSplit[2]));
 				user.setType(lineSplit[3]);
 
-				this.users.add(user);
+				this.userInfo.add(user);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,7 +73,7 @@ public class Users {
 	 * 
 	 * @return an ArrayList of UserDto objects.
 	 */
-	public ArrayList<UserDto> getUsers() {
-		return users;
+	public ArrayList<UserDto> getUserInfo() {
+		return userInfo;
 	}
 }

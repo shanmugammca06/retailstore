@@ -3,22 +3,16 @@
  */
 package com.xische.retailstore.controllers;
 
-import java.io.File;
-import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
-import org.owasp.encoder.Encode;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,40 +35,6 @@ import com.xische.retailstore.daos.BillingDaoImpl;
  */
 @Controller
 public class BillingController {
-
-	/**
-	 * Handles HTTP GET requests to the /ping endpoint. This method is typically
-	 * used to check the health status of the service. It returns a ResponseEntity
-	 * containing a message indicating the service's status.
-	 * 
-	 * The {@code @ResponseBody} annotation ensures that the returned
-	 * ResponseEntity's body is serialized into JSON and written directly to the
-	 * HTTP response.
-	 * 
-	 * The {@code ResponseEntity} allows for full control over the HTTP response,
-	 * including headers, status code, and body.
-	 * 
-	 * @return a ResponseEntity containing a String message. Typically, the message
-	 *         would indicate that the service is up and running, such as "Service
-	 *         is up".
-	 */
-	@RequestMapping(value = "/ping", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<String> ping() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=utf-8");
-		JSONObject jsonValue = new JSONObject();
-		try {
-			File file = ResourceUtils.getFile("classpath:templates/userinfo.db");
-			String fileContent = FileUtils.readFileToString(file, Charset.defaultCharset());
-			System.out.println("fileContent : " + fileContent.replaceAll("\t", "#@#"));
-			jsonValue.put("releasedate", "2022-05-02 21:31");
-			jsonValue.put("version", "1.0");
-			jsonValue.put("timestamp", new SimpleDateFormat("MM/dd/yyyy hh:mm:ss").format(new Date()));
-		} catch (Exception ex) {
-			System.err.println(ex.getMessage());
-		}
-		return new ResponseEntity<String>(Encode.forJava(jsonValue.toString()), headers, HttpStatus.OK);
-	}
 
 	/**
 	 * Handles HTTP POST requests to the /bill/{userId} endpoint. This method

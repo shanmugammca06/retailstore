@@ -28,14 +28,14 @@ import com.xische.retailstore.dtos.ProductDto;
 public class Products {
 
 	private static Products instance;
-	private ArrayList<ProductDto> products = new ArrayList<>();
+	private ArrayList<ProductDto> productInfo = new ArrayList<>();
 
 	/**
 	 * Private constructor for the singleton pattern. Reads product data from a file
 	 * and initializes the products list.
 	 * 
-	 *  The file is expected to be located at "classpath:templates/productdetails.db" and
-	 * should contain user data in a tab-separated format.
+	 * The file is expected to be located at "classpath:templates/productdetails.db"
+	 * and should contain user data in a tab-separated format.
 	 */
 	private Products() {
 		try {
@@ -52,7 +52,7 @@ public class Products {
 				product.setProductName(lineSplit[1]);
 				product.setPrice(Double.parseDouble(lineSplit[2]));
 				product.setCategory(lineSplit[3]);
-				this.products.add(product);
+				this.productInfo.add(product);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class Products {
 	 * 
 	 * @return an ArrayList of ProductDto objects.
 	 */
-	public ArrayList<ProductDto> getProducts() {
-		return products;
+	public ArrayList<ProductDto> getProductInfo() {
+		return productInfo;
 	}
 }

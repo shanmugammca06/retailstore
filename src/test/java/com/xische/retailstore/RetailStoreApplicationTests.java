@@ -22,7 +22,6 @@ class RetailStoreApplicationTests {
 	 */
 	@Test
 	void contextLoads() {
-		System.out.println("application running successfully");
 	}
 
 	/**
